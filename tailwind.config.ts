@@ -10,6 +10,7 @@ const config: Config = {
       colors: {
         primary: "var(--primary)",
         "primary-ink": "var(--primary-ink)",
+        secondary: "var(--secondary)",
         accent: "var(--accent)",
         paper: "var(--paper)",
         ink: "var(--ink)",
@@ -18,8 +19,8 @@ const config: Config = {
         muted: "var(--muted)",
       },
       fontFamily: {
-        serif: ["var(--font-outfit)", "Outfit", "sans-serif"],
-        sans: ["var(--font-plus-jakarta)", "Plus Jakarta Sans", "sans-serif"],
+        title: ["var(--font-poppins)", "Poppins", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "sans-serif"],
         mono: ["var(--font-ibm-plex-mono)", "IBM Plex Mono", "monospace"],
       },
       borderRadius: {
@@ -27,6 +28,10 @@ const config: Config = {
       },
       maxWidth: {
         wrap: "var(--maxw)",
+      },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        hover: "var(--shadow-hover)",
       },
     },
   },

@@ -6,50 +6,83 @@ export default function HeroSection() {
     <div className="wrap" id="inicio">
       <div className="hero">
         <div>
-          <p className="eyebrow">Salud visual + diseño consciente</p>
+          <p className="eyebrow">Salud Visual Especializada · Ópticas DIOTICA</p>
           <h1>
-            Donde la salud visual y el estilo se <em>enfocan</em>.
+            Precisión diagnóstica y cuidado avanzado para tu <span>salud visual</span>.
           </h1>
           <p className="lead">
-            Monturas seleccionadas por optometristas, lentes con protección real y una consulta pensada para escucharte — no para afanarte.
+            Optometristas certificados, tecnología digital de refracción HD y curaduría de monturas exclusivas. Cuidamos la salud de tus ojos con la atención personalizada que mereces.
           </p>
+          
           <div className="hero-ctas">
             <Link href="#agenda" className="btn-primary">
-              Agenda tu asesoría
+              Agendar Cita Médica
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </Link>
             <Link href="/tienda" className="btn-secondary">
-              Ver catálogo
+              Ver Catálogo de Monturas
             </Link>
+          </div>
+
+          <div className="mt-8 flex items-center gap-6 text-xs text-[var(--muted)] font-mono flex-wrap">
+            <span className="flex items-center gap-1.5 font-semibold text-[var(--primary)]">
+              <svg className="w-4 h-4 text-[var(--secondary)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Optometristas Certificados
+            </span>
+            <span className="flex items-center gap-1.5 font-semibold text-[var(--primary)]">
+              <svg className="w-4 h-4 text-[var(--secondary)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Examen Computarizado HD
+            </span>
+            <span className="flex items-center gap-1.5 font-semibold text-[var(--primary)]">
+              <svg className="w-4 h-4 text-[var(--secondary)]" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              Garantía Adaptativa 30 Días
+            </span>
           </div>
         </div>
 
-        <div className="lens-mark" aria-hidden="true">
-          <svg viewBox="0 0 400 400" fill="none">
-            <defs>
-              <radialGradient id="lensGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stopColor="#C79A56" stopOpacity="0.28"/>
-                <stop offset="60%" stopColor="#0E3B36" stopOpacity="0.12"/>
-                <stop offset="100%" stopColor="#F1F3ED" stopOpacity="0"/>
-              </radialGradient>
-              <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#0E3B36"/>
-                <stop offset="50%" stopColor="#C79A56"/>
-                <stop offset="100%" stopColor="#0E3B36"/>
-              </linearGradient>
-            </defs>
-            <circle cx="200" cy="200" r="170" fill="url(#lensGlow)"/>
-            <circle cx="200" cy="200" r="140" stroke="url(#ringGrad)" strokeWidth="1.5" strokeDasharray="6 8" className="ring"/>
-            <circle cx="200" cy="200" r="95" stroke="#0E3B36" strokeWidth="2.5" opacity="0.85"/>
-            <circle cx="200" cy="200" r="40" stroke="#C79A56" strokeWidth="1.5"/>
-            <circle cx="200" cy="200" r="4" fill="#0E3B36"/>
-            <line x1="200" y1="30" x2="200" y2="70" stroke="#0E3B36" strokeWidth="1.5" opacity="0.5"/>
-            <line x1="200" y1="330" x2="200" y2="370" stroke="#0E3B36" strokeWidth="1.5" opacity="0.5"/>
-            <line x1="30" y1="200" x2="70" y2="200" stroke="#0E3B36" strokeWidth="1.5" opacity="0.5"/>
-            <line x1="330" y1="200" x2="370" y2="200" stroke="#0E3B36" strokeWidth="1.5" opacity="0.5"/>
-          </svg>
+        {/* Tarjeta de Ilustración / Diagnóstico Clínico */}
+        <div className="hero-medical-card">
+          <div className="flex items-center justify-between border-b border-[var(--line)] pb-4 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-[var(--surface)] flex items-center justify-center text-[var(--primary)] font-bold font-title">
+                OD
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold">Consulta Óptico-Visual</h4>
+                <p className="text-xs text-[var(--muted)]">Atención privada y personalizada</p>
+              </div>
+            </div>
+            <span className="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded font-mono font-medium">
+              Agenda Disponible
+            </span>
+          </div>
+
+          <div className="space-y-3 text-xs text-[var(--ink)] mb-6">
+            <div className="p-3 bg-[var(--surface)] rounded flex justify-between items-center">
+              <span>⏱ Duración de Consulta</span>
+              <strong className="font-mono text-[var(--primary)]">45 Minutos Clínicos</strong>
+            </div>
+            <div className="p-3 bg-[var(--surface)] rounded flex justify-between items-center">
+              <span>🔬 Examen de Refracción Digital</span>
+              <strong className="font-mono text-[var(--primary)]">100% Preciso</strong>
+            </div>
+            <div className="p-3 bg-[var(--surface)] rounded flex justify-between items-center">
+              <span>🛡 Filtro Antirreflejo AR & Luz Azul</span>
+              <strong className="font-mono text-[var(--primary)]">Grado Óptico HD</strong>
+            </div>
+          </div>
+
+          <Link href="#agenda" className="btn-primary w-full justify-center text-xs py-3">
+            Reservar Consulta en Ópticas DIOTICA
+          </Link>
         </div>
       </div>
     </div>

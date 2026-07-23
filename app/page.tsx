@@ -1,21 +1,36 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import HeroSection from '@/components/home/HeroSection';
 import TrustStrip from '@/components/home/TrustStrip';
-import WhySection from '@/components/home/WhySection';
-import StatsSection from '@/components/home/StatsSection';
-import SnellenDivider from '@/components/home/SnellenDivider';
+import ServicesSection from '@/components/home/ServicesSection';
+import ExamsSection from '@/components/home/ExamsSection';
+import SpecialistsSection from '@/components/home/SpecialistsSection';
+import ContactLensesSection from '@/components/home/ContactLensesSection';
+import PromotionsSection from '@/components/home/PromotionsSection';
+import FAQSection from '@/components/home/FAQSection';
+import ContactFormSection from '@/components/home/ContactFormSection';
 import Testimonials from '@/components/home/Testimonials';
 import ProductCard from '@/components/ui/ProductCard';
-import { SAMPLE_PRODUCTS } from '@/lib/data';
-import { getWhatsAppUrl, WA_MESSAGES } from '@/lib/whatsapp';
+import { SAMPLE_PRODUCTS, Product } from '@/lib/data';
 
 export default function HomePage() {
+  const [products, setProducts] = useState<Product[]>(SAMPLE_PRODUCTS);
   const [activeCategory, setActiveCategory] = useState<string>('todos');
 
-  const filteredProducts = SAMPLE_PRODUCTS.filter((p) => {
+  useEffect(() => {
+    fetch('/api/products')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setProducts(data);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const filteredProducts = products.filter((p) => {
     if (activeCategory === 'todos') return true;
     if (activeCategory === 'acetato') return p.material === 'acetato';
     if (activeCategory === 'metal') return p.material === 'metal';
@@ -27,45 +42,47 @@ export default function HomePage() {
     <>
       <HeroSection />
       <TrustStrip />
-      <WhySection />
-      <StatsSection />
+      <ServicesSection />
+      <ExamsSection />
+      <SpecialistsSection />
 
-      <section>
+      {/* Catálogo de Monturas */}
+      <section id="monturas">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">Colecciones destacadas</p>
-            <h2>Monturas pensadas para durar y favorecer.</h2>
-            <p>Modelos de muestra de nuestro catálogo en rotación constante.</p>
+            <p className="eyebrow">Catálogo de Monturas</p>
+            <h2>Diseño morfológico y materiales seleccionados</h2>
+            <p>Curaduría de marcos resistentes, livianos e hipoalergénicos con garantía adaptativa.</p>
           </div>
 
-          <div className="filter-row" role="group" aria-label="Filtro rápido de catálogo">
+          <div className="flex gap-2 flex-wrap mb-8" role="group" aria-label="Filtro rápido de catálogo">
             <button
               className="filter-chip"
               aria-pressed={activeCategory === 'todos'}
               onClick={() => setActiveCategory('todos')}
             >
-              Todos
+              Todas las Monturas
             </button>
             <button
               className="filter-chip"
               aria-pressed={activeCategory === 'acetato'}
               onClick={() => setActiveCategory('acetato')}
             >
-              Acetato
+              Acetato Italiano
             </button>
             <button
               className="filter-chip"
               aria-pressed={activeCategory === 'metal'}
               onClick={() => setActiveCategory('metal')}
             >
-              Metal
+              Metal Delgado
             </button>
             <button
               className="filter-chip"
               aria-pressed={activeCategory === 'titanio'}
               onClick={() => setActiveCategory('titanio')}
             >
-              Titanio
+              Titanio Ultraligero
             </button>
           </div>
 
@@ -77,38 +94,17 @@ export default function HomePage() {
 
           <div className="mt-10 text-center">
             <Link href="/tienda" className="btn-secondary">
-              Ver catálogo completo
+              Explorar Catálogo Completo
             </Link>
           </div>
         </div>
       </section>
 
-      <SnellenDivider />
+      <ContactLensesSection />
+      <PromotionsSection />
       <Testimonials />
-
-      <section className="cta-band" id="agenda">
-        <div className="wrap">
-          <p className="eyebrow justify-center">¿Listo para ver con claridad?</p>
-          <h2>Reserva tu examen óptico y asesoría de montura</h2>
-          <p className="max-w-xl mx-auto">
-            Atención en consulta privada sin filas ni afanes. Te escuchamos y formulamos la solución exacta para tu visión.
-          </p>
-          <div className="hero-ctas">
-            <a
-              id="ctaAgendaWA"
-              href={getWhatsAppUrl(WA_MESSAGES.agenda)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary"
-            >
-              Agendar por WhatsApp
-            </a>
-            <Link href="/tienda" className="btn-secondary">
-              Explorar monturas primero
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
+      <ContactFormSection />
     </>
   );
 }

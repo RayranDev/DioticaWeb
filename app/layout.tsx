@@ -1,19 +1,20 @@
 import type { Metadata } from 'next';
-import { Outfit, Plus_Jakarta_Sans, IBM_Plex_Mono } from 'next/font/google';
+import { Poppins, Inter, IBM_Plex_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat';
 
-const outfit = Outfit({
+const poppins = Poppins({
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-outfit',
+  variable: '--font-poppins',
   display: 'swap',
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-plus-jakarta',
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -25,8 +26,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Ópticas DIOTICA — Ve mejor, vive mejor',
-  description: 'Monturas y lentes que combinan salud visual y moda. Agenda tu asesoría visual en Ópticas DIOTICA. Ve mejor, vive mejor.',
+  title: 'Ópticas DIOTICA — Ve mejor, vive mejor | Clínica de Salud Visual',
+  description: 'Consulta de optometría especializada, diagnóstico computarizado, lentes de contacto y monturas de alta gama. Ve mejor, vive mejor con Ópticas DIOTICA.',
 };
 
 export default function RootLayout({
@@ -37,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${outfit.variable} ${plusJakarta.variable} ${ibmPlexMono.variable}`}
+      className={`${poppins.variable} ${inter.variable} ${ibmPlexMono.variable}`}
     >
       <body>
         <Header />

@@ -1,17 +1,20 @@
 :root {
-  --primary: #0E3B36;
-  --primary-ink: #0A2B27;
-  --accent: #C79A56;
-  --paper: #F1F3ED;
-  --ink: #10201C;
-  --surface: #E4E0D2;
-  --line: rgba(16, 32, 28, 0.14);
-  --muted: rgba(16, 32, 28, 0.62);
-  --radius: 4px;
-  --maxw: 1180px;
+  --primary: #0F4C81;
+  --primary-ink: #0A365C;
+  --secondary: #3A86C8;
+  --accent: #3A86C8;
+  --paper: #FFFFFF;
+  --ink: #333333;
+  --surface: #F4F6F8;
+  --line: rgba(15, 76, 129, 0.12);
+  --muted: #666666;
+  --radius: 8px;
+  --maxw: 1200px;
+  --shadow-soft: 0 4px 20px rgba(15, 76, 129, 0.06);
+  --shadow-hover: 0 10px 30px rgba(15, 76, 129, 0.12);
 }
 
-/* Custom Base resets matching prototype */
+/* Base reset */
 * {
   box-sizing: border-box;
 }
@@ -24,17 +27,18 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', system-ui, sans-serif;
-  line-height: 1.5;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3 {
-  font-family: var(--font-outfit), 'Outfit', sans-serif;
+h1, h2, h3, h4 {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
   font-weight: 600;
-  line-height: 1.08;
+  line-height: 1.15;
   margin: 0;
-  letter-spacing: -0.02em;
+  color: var(--primary-ink);
+  letter-spacing: -0.015em;
 }
 
 .mono {
@@ -57,6 +61,6 @@ img, svg {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--secondary);
   outline-offset: 3px;
 }
