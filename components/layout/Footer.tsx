@@ -17,10 +17,10 @@ export default function Footer() {
                 className="h-16 w-auto object-contain brightness-0 invert"
               />
             </Link>
-            <p className="text-xs font-mono tracking-widest text-[var(--accent)] uppercase font-semibold mb-3">
+            <p className="text-xs font-mono tracking-widest text-[var(--secondary)] uppercase font-bold mb-3">
               Ve mejor, vive mejor
             </p>
-            <p className="text-sm text-[rgba(255,255,255,0.7)] max-w-xs">
+            <p className="text-sm text-[rgba(255,255,255,0.7)] max-w-xs leading-relaxed">
               Donde la salud visual y el estilo se enfocan. Asesoría personalizada y consulta óptico-visual especializada en Ópticas DIOTICA.
             </p>
           </div>
@@ -38,26 +38,31 @@ export default function Footer() {
           <div>
             <h4>Salud Visual</h4>
             <ul>
-              <li><Link href="/#agenda">Examen especializado</Link></li>
-              <li><Link href="/#agenda">Control de fatiga visual</Link></li>
-              <li><Link href="/#agenda">Lentes de contacto</Link></li>
-              <li><Link href="/#agenda">Asesoría de montura</Link></li>
+              <li><Link href="/#servicios">Examen computarizado</Link></li>
+              <li><Link href="/#examenes">Diagnóstico clínico</Link></li>
+              <li><Link href="/#lentes-contacto">Lentes de contacto</Link></li>
+              <li><Link href="/#promociones">Planes de salud visual</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4>Gestión & Contacto</h4>
+            <h4>Contacto & Citas</h4>
             <ul>
               <li><a href="https://wa.me/573208275234" target="_blank" rel="noopener noreferrer">WhatsApp: +57 320 827 5234</a></li>
               <li><span>Citas presenciales previa agenda</span></li>
-              <li><Link href="/admin" className="text-[var(--accent)] font-mono font-semibold underline">⚙️ Panel Admin Productos</Link></li>
+              <li><span>Atención: Lun – Sáb 9:00am – 6:00pm</span></li>
             </ul>
           </div>
         </div>
 
-        <div className="foot-bottom">
+        <div className="foot-bottom flex justify-between items-center flex-wrap gap-4 pt-6 border-t border-[rgba(255,255,255,0.12)]">
           <span>&copy; {new Date().getFullYear()} Ópticas DIOTICA — Ve mejor, vive mejor. Todos los derechos reservados.</span>
-          <span>El examen óptico especializado requiere agendamiento previo.</span>
+          <div className="flex items-center gap-4 text-xs">
+            <span>Consulta clínica previa cita.</span>
+            <Link href="/admin" className="opacity-40 hover:opacity-100 transition-opacity font-mono text-[0.7rem] text-white">
+              ⚙️ Acceso Portal Interno
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

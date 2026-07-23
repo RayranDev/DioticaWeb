@@ -11,7 +11,6 @@ export default function Header() {
   const pathname = usePathname();
 
   const isTienda = pathname === '/tienda';
-  const isAdmin = pathname.startsWith('/admin');
 
   return (
     <header>
@@ -69,11 +68,6 @@ export default function Header() {
             <li>
               <Link href="/#faq">FAQ</Link>
             </li>
-            <li>
-              <Link href="/admin" className={`px-2.5 py-1 rounded bg-[var(--surface)] text-xs font-mono border border-[var(--line)] ${isAdmin ? 'font-bold text-[var(--primary)] border-[var(--primary)]' : ''}`}>
-                ⚙️ Admin
-              </Link>
-            </li>
           </ul>
         </nav>
 
@@ -106,7 +100,6 @@ export default function Header() {
           <Link href="/#lentes-contacto" onClick={() => setMobileMenuOpen(false)}>Lentes de Contacto</Link>
           <Link href="/#promociones" onClick={() => setMobileMenuOpen(false)}>Promociones</Link>
           <Link href="/#faq" onClick={() => setMobileMenuOpen(false)}>Preguntas Frecuentes</Link>
-          <Link href="/admin" onClick={() => setMobileMenuOpen(false)} className="text-sm font-mono text-[var(--primary)] font-bold">⚙️ Panel Admin</Link>
           <Link href="/#agenda" className="nav-cta text-center mt-2" onClick={() => setMobileMenuOpen(false)}>
             Agendar Cita Médica
           </Link>
