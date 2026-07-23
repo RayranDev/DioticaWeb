@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GafasDioticA — Donde la salud visual y el estilo se enfocan</title>
+<meta name="description" content="Monturas y lentes que combinan salud visual y moda. Agenda tu asesoría visual en GafasDioticA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#0E3B36;
+    --primary-ink:#0A2B27;
+    --accent:#C79A56;
+    --paper:#F1F3ED;
+    --ink:#10201C;
+    --surface:#E4E0D2;
+    --line: rgba(16,32,28,0.14);
+    --muted: rgba(16,32,28,0.62);
+    --radius: 2px;
+    --maxw: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    line-height:1.05;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  img,svg{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  :focus-visible{outline:3px solid var(--accent); outline-offset:3px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:40;
+    background:rgba(241,243,237,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px;}
+  .logo{font-family:'Fraunces',serif; font-size:1.35rem; font-weight:600; text-decoration:none; letter-spacing:-0.01em;}
+  .logo span{color:var(--accent);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink); position:relative; padding:4px 0;}
+  nav ul a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--accent); transition:width .25s ease;}
+  nav ul a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--primary); color:#fff; text-decoration:none;
+    padding:10px 18px; font-size:0.88rem; font-weight:600;
+    border-radius:var(--radius);
+  }
+  .menu-toggle{display:none; background:none; border:none; cursor:pointer;}
+  @media (max-width:860px){
+    nav ul{display:none;}
+    .menu-toggle{display:block;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 0 96px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; text-transform:uppercase;
+    letter-spacing:0.14em; color:var(--primary); display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--accent);}
+  .hero h1{
+    font-size:clamp(2.4rem, 4.6vw, 4rem);
+    filter:blur(9px); opacity:0;
+    animation:enfocar 1.15s cubic-bezier(.22,.8,.36,1) forwards;
+    animation-delay:.15s;
+  }
+  .hero h1 em{font-style:italic; color:var(--primary);}
+  @keyframes enfocar{ to{filter:blur(0); opacity:1;} }
+  .hero p.lead{
+    max-width:46ch; margin-top:22px; font-size:1.08rem; color:var(--muted);
+    opacity:0; animation:subir .8s ease forwards; animation-delay:.55s;
+  }
+  @keyframes subir{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;
+    opacity:0; animation:subir .8s ease forwards; animation-delay:.75s;}
+  .btn-primary, .btn-secondary{
+    text-decoration:none; padding:14px 24px; font-weight:600; font-size:0.95rem;
+    border-radius:var(--radius); display:inline-flex; align-items:center; gap:8px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(14,59,54,0.25);}
+  .btn-secondary{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-secondary:hover{border-color:var(--primary); transform:translateY(-2px);}
+
+  /* Signature lens graphic — custom iconography, no stock photo */
+  .lens-mark{position:relative; width:100%; aspect-ratio:1/1; max-width:420px; margin-left:auto;}
+  .lens-mark svg{width:100%; height:100%;}
+  .lens-mark .ring{transform-origin:center; animation:girar 40s linear infinite;}
+  @media (prefers-reduced-motion:reduce){ .lens-mark .ring{animation:none;} }
+
+  /* ---------- Trust strip ---------- */
+  .trust{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:20px 0; background:var(--surface);
+  }
+  .trust .wrap{display:flex; gap:40px; justify-content:center; flex-wrap:wrap; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; letter-spacing:0.05em; color:var(--primary-ink);}
+
+  /* ---------- Section shell ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.9rem, 3.2vw, 2.6rem);}
+  .section-head p{color:var(--muted); margin-top:16px; font-size:1.02rem;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+
+  /* ---------- Por qué elegirnos ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .why-card{background:var(--paper); padding:32px 26px;}
+  .why-card svg{width:34px; height:34px; color:var(--primary); margin-bottom:20px;}
+  .why-card h3{font-size:1.1rem; margin-bottom:10px;}
+  .why-card p{font-size:0.92rem; color:var(--muted); margin:0;}
+  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Contadores ---------- */
+  .stats{background:var(--primary); color:#fff;}
+  .stats .wrap{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
+  .stat-num{font-family:'Fraunces',serif; font-size:clamp(2.2rem,4vw,3.2rem); color:var(--accent);}
+  .stat-label{font-size:0.82rem; color:rgba(255,255,255,0.75); margin-top:6px; font-family:'IBM Plex Mono',monospace; letter-spacing:0.03em;}
+  @media (max-width:700px){ .stats .wrap{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- Colecciones / catálogo ---------- */
+  .filter-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:36px;}
+  .filter-chip{
+    font-family:'IBM Plex Mono',monospace; font-size:0.78rem; padding:8px 16px;
+    border:1px solid var(--line); border-radius:999px; background:transparent; cursor:pointer;
+  }
+  .filter-chip[aria-pressed="true"]{background:var(--primary); color:#fff; border-color:var(--primary);}
+  .product-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .product-card{background:var(--surface); position:relative; overflow:hidden;}
+  .product-media{aspect-ratio:4/3; position:relative; background:linear-gradient(135deg,var(--primary) 0%, #175a52 60%, var(--accent) 130%);}
+  .sample-badge{
+    position:absolute; top:12px; left:12px; background:rgba(16,32,28,0.85); color:#fff;
+    font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.08em;
+    padding:4px 9px; border-radius:2px; text-transform:uppercase;
+  }
+  .product-body{padding:18px 18px 22px;}
+  .product-body h3{font-size:1rem; font-weight:600; font-family:'Inter'; margin-bottom:4px;}
+  .product-body .cat{font-size:0.78rem; color:var(--muted);}
+  .product-price{font-family:'IBM Plex Mono',monospace; margin-top:12px; font-size:0.95rem; display:flex; justify-content:space-between; align-items:center;}
+  .product-price a{font-size:0.75rem; color:var(--primary); text-decoration:underline;}
+  @media (max-width:960px){ .product-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .product-grid{grid-template-columns:1fr;} }
+
+  /* ---------- Snellen divider — real optometry reference, not decoration ---------- */
+  .snellen{padding:64px 0; text-align:center; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .snellen p{
+    font-family:'Fraunces',serif; color:var(--line); white-space:nowrap;
+    letter-spacing:0.3em;
+  }
+  .snellen p:nth-child(1){font-size:3.6rem; color:rgba(14,59,54,0.14);}
+  .snellen p:nth-child(2){font-size:2.6rem; color:rgba(14,59,54,0.20); margin-top:8px;}
+  .snellen p:nth-child(3){font-size:1.7rem; color:rgba(14,59,54,0.30); margin-top:8px;}
+  .snellen span.msg{
+    display:block; font-family:'IBM Plex Mono',monospace; letter-spacing:0.08em;
+    font-size:0.82rem; color:var(--primary); margin-top:20px; white-space:normal;
+  }
+
+  /* ---------- Testimonios (carousel) ---------- */
+  .testi-wrap{position:relative; max-width:720px; margin:0 auto;}
+  .testi-track{overflow:hidden;}
+  .testi-slide{display:none; text-align:center; padding:0 20px;}
+  .testi-slide.active{display:block;}
+  .testi-slide blockquote{font-family:'Fraunces',serif; font-size:1.5rem; font-weight:400; margin:0; line-height:1.35;}
+  .testi-slide cite{display:block; margin-top:22px; font-style:normal; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--muted);}
+  .testi-controls{display:flex; justify-content:center; gap:16px; margin-top:32px; align-items:center;}
+  .testi-controls button{
+    background:none; border:1px solid var(--line); width:38px; height:38px; border-radius:50%;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .testi-dots{display:flex; gap:8px;}
+  .testi-dots button{width:7px; height:7px; padding:0; border-radius:50%; background:var(--line); border:none;}
+  .testi-dots button[aria-current="true"]{background:var(--accent);}
+
+  /* ---------- CTA banda ---------- */
+  .cta-band{background:var(--surface); text-align:center;}
+  .cta-band h2{font-size:clamp(1.8rem,3vw,2.4rem); max-width:600px; margin:0 auto;}
+  .cta-band p{color:var(--muted); margin-top:16px;}
+  .cta-band .hero-ctas{justify-content:center; margin-top:30px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--primary-ink); color:rgba(255,255,255,0.82); padding:64px 0 32px; font-size:0.9rem;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;}
+  footer h4{font-family:'IBM Plex Mono',monospace; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent); margin-bottom:16px;}
+  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;}
+  footer a{text-decoration:none; color:inherit;}
+  footer a:hover{color:var(--accent);}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.12); margin-top:48px; padding-top:22px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.78rem; color:rgba(255,255,255,0.55);}
+  @media (max-width:800px){ .foot-grid{grid-template-columns:1fr 1fr;} }
+
+  /* ---------- WhatsApp float ---------- */
+  .wa-float{
+    position:fixed; bottom:22px; right:22px; z-index:50;
+    background:#0E3B36; color:#fff; width:58px; height:58px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; text-decoration:none;
+    box-shadow:0 10px 26px rgba(14,59,54,0.35);
+    transition:transform .2s ease;
+  }
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:26px; height:26px;}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr; padding-top:56px;}
+    .lens-mark{margin:0 auto; max-width:280px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="#inicio" class="logo">Gafas<span>DioticA</span></a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="tienda.html">Catálogo</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#agenda">Agenda tu asesoría</a></li>
+      </ul>
+    </nav>
+    <a href="#agenda" class="nav-cta">Agenda tu asesoría</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <!-- HERO -->
+  <section class="hero wrap" style="padding-top:88px;">
+    <div>
+      <p class="eyebrow">Salud visual · Estilo · Bogotá</p>
+      <h1>Enfoca tu estilo,<br>no solo tu <em>visión</em>.</h1>
+      <p class="lead">En GafasDioticA la fórmula de tu fórmula óptica también dice algo de ti. Monturas seleccionadas por optómetras, pensadas por gente que sabe de moda.</p>
+      <div class="hero-ctas">
+        <a href="#agenda" class="btn-primary">Agenda tu asesoría visual</a>
+        <a href="tienda.html" class="btn-secondary">Ver catálogo</a>
+      </div>
+    </div>
+    <div class="lens-mark" aria-hidden="true">
+      <svg viewBox="0 0 400 400" fill="none">
+        <g class="ring">
+          <circle cx="150" cy="200" r="118" stroke="#0E3B36" stroke-width="14"/>
+          <circle cx="270" cy="200" r="118" stroke="#C79A56" stroke-width="14" fill="none"/>
+        </g>
+        <line x1="255" y1="140" x2="290" y2="120" stroke="#10201C" stroke-width="10" stroke-linecap="round"/>
+        <line x1="20" y1="140" x2="55" y2="120" stroke="#10201C" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="trust">
+    <div class="wrap">
+      <span>OPTÓMETRAS CERTIFICADOS</span>
+      <span>ASESORÍA PRESENCIAL Y VIRTUAL</span>
+      <span>ENVÍOS A TODA COLOMBIA</span>
+      <span>GARANTÍA EN MONTURAS</span>
+    </div>
+  </div>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section id="nosotros">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>Dos oficios, un solo resultado: que veas bien y te veas bien.</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="why-grid reveal">
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/></svg>
+          <h3>Examen visual real</h3>
+          <p>Tu fórmula la define un optómetra, no un formulario de talla.</p>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          <h3>Curaduría de moda</h3>
+          <p>Monturas elegidas por forma de rostro y por lo que se está usando este año.</p>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 6v6c0 5 4 8 9 10 5-2 9-5 9-10V6l-9-4Z"/></svg>
+          <h3>Garantía en monturas</h3>
+          <p>Si algo falla de fábrica, lo resolvemos sin vueltas.</p>
+        </div>
+        <div class="why-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 21 6.5-1.5L20 9a2.4 2.4 0 0 0-3.5-3.5L6 16l-3 5Z"/></svg>
+          <h3>Asesoría 1 a 1</h3>
+          <p>Presencial o por WhatsApp: te ayudamos a elegir, no solo a comprar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTADORES -->
+  <section class="stats" style="padding:64px 0;">
+    <div class="wrap">
+      <div>
+        <div class="stat-num" data-count="0" data-target="0">0</div>
+        <div class="stat-label">AÑOS DE EXPERIENCIA*</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="0" data-target="0">0</div>
+        <div class="stat-label">CLIENTES ATENDIDOS*</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="0" data-target="0">0</div>
+        <div class="stat-label">MONTURAS EN CATÁLOGO*</div>
+      </div>
+      <div>
+        <div class="stat-num" data-count="0" data-target="0">0</div>
+        <div class="stat-label">CALIFICACIÓN PROMEDIO*</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATÁLOGO -->
+  <section id="tienda">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Colecciones destacadas</p>
+        <h2>Lo que más se está llevando la gente.</h2>
+        <p>Filtra por lo que buscas — el catálogo real se conecta al CMS cuando tengamos tus productos y precios.</p>
+      </div>
+      <div class="filter-row reveal">
+        <button class="filter-chip" aria-pressed="true">Todas</button>
+        <button class="filter-chip" aria-pressed="false">Mujer</button>
+        <button class="filter-chip" aria-pressed="false">Hombre</button>
+        <button class="filter-chip" aria-pressed="false">Rostro redondo</button>
+        <button class="filter-chip" aria-pressed="false">Lentes de contacto</button>
+      </div>
+      <div class="product-grid reveal">
+        <!-- Producto de MUESTRA — reemplazar con catálogo real vía CMS -->
+        <article class="product-card">
+          <div class="product-media"><span class="sample-badge">Muestra</span></div>
+          <div class="product-body">
+            <h3>Montura Meridiano</h3>
+            <p class="cat">Acetato · Unisex</p>
+            <div class="product-price"><span>$249.000</span><a href="#agenda">Probar</a></div>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-media"><span class="sample-badge">Muestra</span></div>
+          <div class="product-body">
+            <h3>Montura Solsticio</h3>
+            <p class="cat">Metal · Mujer</p>
+            <div class="product-price"><span>$319.000</span><a href="#agenda">Probar</a></div>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-media"><span class="sample-badge">Muestra</span></div>
+          <div class="product-body">
+            <h3>Montura Nórdica</h3>
+            <p class="cat">Titanio · Hombre</p>
+            <div class="product-price"><span>$389.000</span><a href="#agenda">Probar</a></div>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-media"><span class="sample-badge">Muestra</span></div>
+          <div class="product-body">
+            <h3>Lentes de contacto Diaria</h3>
+            <p class="cat">Caja x30 · Todo rostro</p>
+            <div class="product-price"><span>$89.000</span><a href="#agenda">Probar</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SNELLEN DIVIDER — referencia real a la carta optométrica -->
+  <div class="snellen reveal">
+    <p>ENFOCA</p>
+    <p>TU ESTILO</p>
+    <p>HOY</p>
+    <span class="msg">// carta de agudeza visual, reinterpretada — no decoración</span>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <section id="testimonios">
+    <div class="wrap">
+      <div class="section-head reveal" style="margin:0 auto 48px; text-align:center;">
+        <p class="eyebrow" style="justify-content:center;">Testimonios</p>
+        <h2>Lo que dicen quienes ya se probaron unas nuevas.</h2>
+      </div>
+      <div class="testi-wrap reveal" role="region" aria-roledescription="carrusel" aria-label="Testimonios de clientes">
+        <div class="testi-track">
+          <div class="testi-slide active" aria-hidden="false">
+            <blockquote>"Fue la primera vez que en una óptica me preguntaron cómo quería verme, no solo cómo veía."</blockquote>
+            <cite>— Testimonio de ejemplo, reemplazar por reseña real con foto</cite>
+          </div>
+          <div class="testi-slide" aria-hidden="true">
+            <blockquote>"El examen fue completo de verdad, y las monturas no se veían iguales a las de cualquier centro comercial."</blockquote>
+            <cite>— Testimonio de ejemplo, reemplazar por reseña real con foto</cite>
+          </div>
+          <div class="testi-slide" aria-hidden="true">
+            <blockquote>"Agendé por WhatsApp, me atendieron rápido y salí con mis gafas listas en menos de una semana."</blockquote>
+            <cite>— Testimonio de ejemplo, reemplazar por reseña real con foto</cite>
+          </div>
+        </div>
+        <div class="testi-controls">
+          <button id="testiPrev" aria-label="Testimonio anterior">‹</button>
+          <div class="testi-dots" id="testiDots"></div>
+          <button id="testiNext" aria-label="Siguiente testimonio">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA banda -->
+  <section class="cta-band" id="agenda">
+    <div class="wrap">
+      <p class="eyebrow" style="justify-content:center;">Agenda tu asesoría</p>
+      <h2>¿Hablamos por WhatsApp o prefieres agendar una hora fija?</h2>
+      <p>Cuéntanos qué necesitas y te ayudamos a elegir sin apuro — presencial o virtual.</p>
+      <div class="hero-ctas">
+        <a href="#" id="ctaAgendaWA" class="btn-primary">Escribir por WhatsApp</a>
+        <a href="#contacto" class="btn-secondary">Ver otras formas de contacto</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#inicio" class="logo" style="color:#fff;">Gafas<span>DioticA</span></a>
+        <p style="margin-top:16px; max-width:32ch; color:rgba(255,255,255,0.65);">Donde la salud visual, el diseño y la innovación se unen.</p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="#tienda">Catálogo</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#agenda">Agenda tu cita</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/573208275234" target="_blank" rel="noopener">WhatsApp 320 827 5234</a></li>
+          <li><a href="https://wa.me/573115065096" target="_blank" rel="noopener">WhatsApp 311 506 5096</a></li>
+          <li><a href="mailto:diootica@gmail.com">diootica@gmail.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ubicación y horario</h4>
+        <ul>
+          <li style="color:rgba(255,255,255,0.5);">Pendiente — dirección exacta</li>
+          <li style="color:rgba(255,255,255,0.5);">Pendiente — horario de atención</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> GafasDioticA. Todos los derechos reservados.</span>
+      <span>Prototipo de diseño — contenido de muestra marcado en el propio sitio.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573208275234?text=Hola%2C%20vengo%20del%20sitio%20web%20de%20GafasDioticA%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n"
+   class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.5 1.1 2.6c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
+
+  // Animated counters — placeholder targets, replace with real business figures
+  const counters = document.querySelectorAll('.stat-num');
+  const targets = [12, 4800, 60, 4.9];
+  counters.forEach((el, i) => el.dataset.target = targets[i]);
+  const statsSection = document.querySelector('.stats');
+  let counted = false;
+  function runCounters(){
+    if (counted) return;
+    counted = true;
+    counters.forEach(el => {
+      const target = parseFloat(el.dataset.target);
+      if (reduceMotion) { el.textContent = target; return; }
+      let start = 0;
+      const duration = 1400;
+      const startTime = performance.now();
+      function tick(now){
+        const p = Math.min((now - startTime) / duration, 1);
+        const val = target < 10 ? (target * p).toFixed(1) : Math.floor(target * p);
+        el.textContent = val;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  const statsIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) runCounters(); });
+  }, { threshold: 0.4 });
+  statsIO.observe(statsSection);
+
+  // Filter chips (visual state only in this prototype)
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.setAttribute('aria-pressed', 'false'));
+      chip.setAttribute('aria-pressed', 'true');
+    });
+  });
+
+  // Testimonial carousel
+  const slides = document.querySelectorAll('.testi-slide');
+  const dotsWrap = document.getElementById('testiDots');
+  let current = 0;
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', `Ir al testimonio ${i + 1}`);
+    if (i === 0) dot.setAttribute('aria-current', 'true');
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  function goTo(i){
+    slides[current].classList.remove('active');
+    slides[current].setAttribute('aria-hidden', 'true');
+    dotsWrap.children[current].removeAttribute('aria-current');
+    current = (i + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    slides[current].setAttribute('aria-hidden', 'false');
+    dotsWrap.children[current].setAttribute('aria-current', 'true');
+  }
+  document.getElementById('testiPrev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('testiNext').addEventListener('click', () => goTo(current + 1));
+  let autoplay = setInterval(() => goTo(current + 1), 6000);
+  const testiWrap = document.querySelector('.testi-wrap');
+  testiWrap.addEventListener('mouseenter', () => clearInterval(autoplay));
+  testiWrap.addEventListener('focusin', () => clearInterval(autoplay));
+  testiWrap.addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo(current + 1), 6000); });
+
+  // WhatsApp float — mensaje predefinido según la sección visible
+  const waFloat = document.getElementById('waFloat');
+  const waMessages = {
+    inicio: "Hola, vengo del sitio web de GafasDioticA, quiero más información",
+    tienda: "Hola, vi el catálogo en la web y quiero preguntar por una montura",
+    testimonios: "Hola, vengo del sitio web de GafasDioticA, quiero más información",
+    agenda: "Hola, quiero agendar una asesoría visual",
+    contacto: "Hola, tengo una pregunta antes de comprar"
+  };
+  document.getElementById('ctaAgendaWA').href =
+    `https://wa.me/573208275234?text=${encodeURIComponent(waMessages.agenda)}`;
+
+  const sectionIds = Object.keys(waMessages);
+  const waIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const msg = waMessages[entry.target.id] || waMessages.inicio;
+        waFloat.href = `https://wa.me/573208275234?text=${encodeURIComponent(msg)}`;
+      }
+    });
+  }, { threshold: 0.5 });
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) waIO.observe(el);
+  });
+</script>
+
+</body>
+</html>

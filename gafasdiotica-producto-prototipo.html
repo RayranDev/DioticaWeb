@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montura Meridiano — GafasDioticA</title>
+<meta name="description" content="Montura Meridiano en acetato, unisex. Consulta disponibilidad por WhatsApp o agenda una prueba presencial.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#0E3B36; --primary-ink:#0A2B27; --accent:#C79A56;
+    --paper:#F1F3ED; --ink:#10201C; --surface:#E4E0D2;
+    --line: rgba(16,32,28,0.14); --muted: rgba(16,32,28,0.62); --radius:2px; --maxw:1180px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:500; line-height:1.05; margin:0; letter-spacing:-0.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;} img,svg{max-width:100%; display:block;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  :focus-visible{outline:3px solid var(--accent); outline-offset:3px;}
+  button{font-family:inherit;}
+
+  header{position:sticky; top:0; z-index:40; background:rgba(241,243,237,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  .nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px;}
+  .logo{font-family:'Fraunces',serif; font-size:1.35rem; font-weight:600; text-decoration:none;}
+  .logo span{color:var(--accent);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav ul a{text-decoration:none; font-size:0.92rem; font-weight:500; color:var(--ink); position:relative; padding:4px 0;}
+  nav ul a.active{color:var(--primary); font-weight:700;}
+  .nav-cta{background:var(--primary); color:#fff; text-decoration:none; padding:10px 18px; font-size:0.88rem; font-weight:600; border-radius:var(--radius);}
+  @media (max-width:860px){ nav ul{display:none;} }
+
+  .breadcrumb{padding:20px 0 0; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted);}
+  .breadcrumb a{text-decoration:none; color:var(--primary);}
+
+  .product-layout{display:grid; grid-template-columns:1fr 1fr; gap:56px; padding:32px 0 88px; align-items:start;}
+
+  .gallery-main{
+    aspect-ratio:4/3; position:relative; overflow:hidden; cursor:zoom-in;
+    background:linear-gradient(135deg,var(--primary) 0%, #175a52 55%, var(--accent) 130%);
+  }
+  .gallery-main.zoomed{cursor:zoom-out;}
+  .gallery-main .zoom-hint{position:absolute; bottom:14px; right:14px; background:rgba(16,32,28,0.7); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:0.68rem; padding:5px 10px; border-radius:2px;}
+  .sample-badge{position:absolute; top:14px; left:14px; background:rgba(16,32,28,0.85); color:#fff; font-family:'IBM Plex Mono',monospace; font-size:0.62rem; letter-spacing:0.08em; padding:4px 9px; border-radius:2px; text-transform:uppercase; z-index:2;}
+  .thumbs{display:flex; gap:10px; margin-top:12px;}
+  .thumb{width:64px; aspect-ratio:4/3; background:linear-gradient(135deg,var(--primary), var(--accent)); opacity:0.55; cursor:pointer; border:2px solid transparent;}
+  .thumb.active{opacity:1; border-color:var(--primary);}
+
+  .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.14em; color:var(--primary); margin-bottom:14px;}
+  .product-info h1{font-size:clamp(1.8rem,3vw,2.4rem);}
+  .price{font-family:'IBM Plex Mono',monospace; font-size:1.3rem; margin-top:14px; color:var(--primary-ink);}
+  .price .from{font-size:0.75rem; color:var(--muted); display:block; margin-bottom:2px;}
+  .desc{margin-top:20px; color:var(--muted); max-width:52ch;}
+
+  .variant-group{margin-top:30px;}
+  .variant-group h3{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink); margin-bottom:12px;}
+  .swatches{display:flex; gap:10px;}
+  .swatch{width:34px; height:34px; border-radius:50%; border:2px solid transparent; cursor:pointer; position:relative;}
+  .swatch[aria-pressed="true"]{border-color:var(--primary);}
+  .swatch[aria-pressed="true"]::after{content:"✓"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.9rem;}
+  .size-options{display:flex; gap:10px;}
+  .size-opt{padding:9px 16px; border:1px solid var(--line); background:transparent; cursor:pointer; font-size:0.85rem; border-radius:var(--radius);}
+  .size-opt[aria-pressed="true"]{background:var(--primary); color:#fff; border-color:var(--primary);}
+
+  .ctas{display:flex; flex-direction:column; gap:12px; margin-top:34px; max-width:340px;}
+  .btn-primary, .btn-secondary{text-decoration:none; padding:15px 22px; font-weight:600; font-size:0.95rem; border-radius:var(--radius); display:inline-flex; align-items:center; justify-content:center; gap:8px; text-align:center;}
+  .btn-primary{background:var(--primary); color:#fff;}
+  .btn-secondary{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .stock-note{font-size:0.8rem; color:var(--muted); margin-top:10px;}
+
+  .tabs{margin-top:40px; border-top:1px solid var(--line);}
+  .tab-btn{background:none; border:none; border-bottom:2px solid transparent; padding:16px 0; margin-right:28px; font-size:0.9rem; font-weight:600; cursor:pointer; color:var(--muted);}
+  .tab-btn[aria-selected="true"]{color:var(--primary); border-color:var(--primary);}
+  .tab-panel{display:none; padding:20px 0; color:var(--muted); font-size:0.92rem; line-height:1.7;}
+  .tab-panel.active{display:block;}
+  .spec-row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line); font-family:'IBM Plex Mono',monospace; font-size:0.82rem;}
+
+  .related{padding:0 0 96px;}
+  .related h2{font-size:1.5rem; margin-bottom:26px;}
+  .related-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .related-card{text-decoration:none; color:var(--ink); display:block;}
+  .related-media{aspect-ratio:4/3; background:linear-gradient(135deg,var(--primary), var(--accent)); margin-bottom:10px;}
+  .related-card h4{font-size:0.9rem; font-weight:600;}
+  .related-card .p{font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--muted); margin-top:2px;}
+
+  @media (max-width:860px){ .product-layout{grid-template-columns:1fr;} .related-grid{grid-template-columns:repeat(2,1fr);} }
+
+  footer{background:var(--primary-ink); color:rgba(255,255,255,0.82); padding:48px 0 28px; font-size:0.9rem;}
+  .foot-bottom{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.78rem; color:rgba(255,255,255,0.55);}
+  footer a{color:#fff; text-decoration:none;} footer a:hover{color:var(--accent);}
+
+  .wa-float{position:fixed; bottom:22px; right:22px; z-index:50; background:#0E3B36; color:#fff; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 10px 26px rgba(14,59,54,0.35); transition:transform .2s ease;}
+  .wa-float:hover{transform:scale(1.08);}
+  .wa-float svg{width:26px; height:26px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a href="index.html" class="logo">Gafas<span>DioticA</span></a>
+    <nav aria-label="Navegación principal">
+      <ul>
+        <li><a href="tienda.html" class="active">Catálogo</a></li>
+        <li><a href="index.html#nosotros">Nosotros</a></li>
+        <li><a href="index.html#testimonios">Testimonios</a></li>
+        <li><a href="index.html#blog">Blog</a></li>
+        <li><a href="index.html#agenda">Agenda tu asesoría</a></li>
+      </ul>
+    </nav>
+    <a href="index.html#agenda" class="nav-cta">Agenda tu asesoría</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="breadcrumb"><a href="index.html">Inicio</a> / <a href="tienda.html">Catálogo</a> / Montura Meridiano</p>
+
+  <div class="product-layout">
+    <div>
+      <div class="gallery-main" id="galleryMain" tabindex="0" role="img" aria-label="Fotografía de la montura Meridiano — imagen de muestra, clic para acercar">
+        <span class="sample-badge">Imagen de muestra</span>
+        <span class="zoom-hint">Clic para acercar</span>
+      </div>
+      <div class="thumbs" role="list" aria-label="Miniaturas de producto">
+        <div class="thumb active" tabindex="0" role="listitem" aria-label="Vista 1"></div>
+        <div class="thumb" tabindex="0" role="listitem" aria-label="Vista 2"></div>
+        <div class="thumb" tabindex="0" role="listitem" aria-label="Vista 3"></div>
+      </div>
+    </div>
+
+    <div class="product-info">
+      <p class="eyebrow">Acetato · Unisex</p>
+      <h1>Montura Meridiano</h1>
+      <div class="price"><span class="from">Precio de muestra</span>$249.000</div>
+      <p class="desc">Montura de acetato con puente bajo, pensada para rostros ovalados y redondos. Marco medio, ideal tanto para lectura como para uso diario con luz azul.</p>
+
+      <div class="variant-group">
+        <h3>Color</h3>
+        <div class="swatches" role="group" aria-label="Selecciona un color">
+          <button class="swatch" style="background:#2c2620;" aria-pressed="true" aria-label="Carey oscuro"></button>
+          <button class="swatch" style="background:#0E3B36;" aria-pressed="false" aria-label="Verde petróleo"></button>
+          <button class="swatch" style="background:#C79A56;" aria-pressed="false" aria-label="Bronce translúcido"></button>
+        </div>
+      </div>
+
+      <div class="variant-group">
+        <h3>Talla de puente</h3>
+        <div class="size-options" role="group" aria-label="Selecciona una talla">
+          <button class="size-opt" aria-pressed="false">Estrecho — 16mm</button>
+          <button class="size-opt" aria-pressed="true">Medio — 18mm</button>
+          <button class="size-opt" aria-pressed="false">Ancho — 20mm</button>
+        </div>
+      </div>
+
+      <div class="ctas">
+        <a href="#" id="waProduct" class="btn-primary" target="_blank" rel="noopener">Consultar disponibilidad por WhatsApp</a>
+        <a href="index.html#agenda" class="btn-secondary">Agendar prueba presencial</a>
+      </div>
+      <p class="stock-note">Sin carrito ni pago en línea por ahora — cada compra se confirma por WhatsApp con un optómetra.</p>
+
+      <div class="tabs">
+        <div>
+          <button class="tab-btn" aria-selected="true" data-tab="descripcion">Descripción</button>
+          <button class="tab-btn" aria-selected="false" data-tab="ficha">Ficha técnica</button>
+          <button class="tab-btn" aria-selected="false" data-tab="cuidados">Cuidados</button>
+        </div>
+        <div class="tab-panel active" id="tab-descripcion">
+          Contenido de muestra — aquí va la descripción real del producto: materiales, inspiración del diseño y para qué tipo de uso está pensada.
+        </div>
+        <div class="tab-panel" id="tab-ficha">
+          <div class="spec-row"><span>MATERIAL</span><span>ACETATO</span></div>
+          <div class="spec-row"><span>ANCHO TOTAL</span><span>140MM*</span></div>
+          <div class="spec-row"><span>ALTO DE LENTE</span><span>44MM*</span></div>
+          <div class="spec-row"><span>PESO</span><span>22G*</span></div>
+          <p style="margin-top:12px; font-size:0.78rem;">*Medidas de muestra — reemplazar por ficha técnica real.</p>
+        </div>
+        <div class="tab-panel" id="tab-cuidados">
+          Contenido de muestra — recomendaciones reales de limpieza y mantenimiento de la montura.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>También te puede gustar</h2>
+    <div class="related-grid">
+      <a class="related-card" href="producto.html"><div class="related-media"></div><h4>Montura Solsticio</h4><p class="p">$319.000</p></a>
+      <a class="related-card" href="producto.html"><div class="related-media"></div><h4>Montura Ámbar</h4><p class="p">$279.000</p></a>
+      <a class="related-card" href="producto.html"><div class="related-media"></div><h4>Montura Andina</h4><p class="p">$229.000</p></a>
+      <a class="related-card" href="producto.html"><div class="related-media"></div><h4>Montura Vértice</h4><p class="p">$359.000</p></a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="mono" style="color:var(--accent); text-transform:uppercase; font-size:0.75rem; letter-spacing:0.08em; margin-bottom:14px;">Contacto</p>
+    <p style="margin:0 0 22px;">
+      <a href="https://wa.me/573208275234" target="_blank" rel="noopener">WhatsApp 320 827 5234</a> ·
+      <a href="https://wa.me/573115065096" target="_blank" rel="noopener">WhatsApp 311 506 5096</a> ·
+      <a href="mailto:diootica@gmail.com">diootica@gmail.com</a>
+    </p>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> GafasDioticA.</span>
+      <span>Prototipo de diseño — contenido de muestra marcado en el propio sitio.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s1 2.5 1.1 2.6c.1.2 2 3 4.8 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.6.2-1.2.2-1.3-.1-.2-.3-.2-.6-.4Z"/><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Z"/></svg>
+</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const productName = document.querySelector('h1').textContent.trim();
+  const waMsg = encodeURIComponent(`Hola, quiero consultar disponibilidad de la ${productName}`);
+  const waLink = `https://wa.me/573208275234?text=${waMsg}`;
+  document.getElementById('waProduct').href = waLink;
+  document.getElementById('waFloat').href = waLink;
+
+  // Zoom
+  const galleryMain = document.getElementById('galleryMain');
+  function toggleZoom(){
+    galleryMain.classList.toggle('zoomed');
+    galleryMain.style.backgroundSize = galleryMain.classList.contains('zoomed') ? '180%' : '';
+  }
+  galleryMain.addEventListener('click', toggleZoom);
+  galleryMain.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleZoom(); }});
+
+  // Thumbs (visual only in this prototype)
+  document.querySelectorAll('.thumb').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+
+  // Variant swatches
+  document.querySelectorAll('.swatch').forEach(s => {
+    s.addEventListener('click', () => {
+      s.parentElement.querySelectorAll('.swatch').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      s.setAttribute('aria-pressed', 'true');
+    });
+  });
+  document.querySelectorAll('.size-opt').forEach(s => {
+    s.addEventListener('click', () => {
+      s.parentElement.querySelectorAll('.size-opt').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      s.setAttribute('aria-pressed', 'true');
+    });
+  });
+
+  // Tabs
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.setAttribute('aria-selected', 'false'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
